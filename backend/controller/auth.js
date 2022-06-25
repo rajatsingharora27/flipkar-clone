@@ -1,10 +1,12 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+
 const CryptoJs=require('crypto-js');
 
 
 exports.signup = (req, res) => {
 
+   
 
     User.findOne({ email: req.body.email })
         .exec((err, user) => {
