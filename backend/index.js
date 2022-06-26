@@ -17,9 +17,11 @@ mongoose.connect('mongodb://localhost:27017/flipkartClone')
 
 const userRouter=require('./routes/user');
 const adminRouter=require('./routes/admin/user');
+const categoryRouter=require('./routes/category');
 
 app.use('/api',userRouter);
 app.use('/api',adminRouter);
+app.use('/api',categoryRouter);
 
 
 app.listen(process.env.PORT,()=>{

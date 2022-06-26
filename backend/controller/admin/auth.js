@@ -53,7 +53,7 @@ exports.signin = async (req, res) => {
             }
             else {
                 // creating the JWT 
-                const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN_KEY, { expiresIn: '7d' });
+                const token = jwt.sign({  _id: user._id , role:user.role }, process.env.JWT_TOKEN_KEY, { expiresIn: '7d' });
                 const {_id, first_name, last_name, email, role, fullname } = user;
                 res.status(200).json({
                     token,
@@ -81,10 +81,10 @@ exports.signin = async (req, res) => {
 
 
 
-exports.requireSignin =(req,res,next)=>{
-    const token = req.headers.authorization.split(" ")[1];
-    var decoded = jwt.verify(token, process.env.JWT_TOKEN_KEY);
-    req.user=decoded // adding one more property to user
-    console.log(decoded);
-    next();
-}
+// exports.requireSignin =(req,res,next)=>{
+//     const token = req.headers.authorization.split(" ")[1];
+//     var decoded = jwt.verify(token, process.env.JWT_TOKEN_KEY);
+//     req.user=decoded // adding one more property to user
+//     console.log(decoded);
+//     next();
+// }
